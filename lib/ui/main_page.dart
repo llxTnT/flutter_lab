@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutterlab/ui/sample/common_view_sample_page.dart';
 
 class MainPage extends StatefulWidget {
   MainPage({Key key, this.title}) : super(key: key);
@@ -21,19 +22,6 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -95,19 +83,39 @@ class _MainPageState extends State<MainPage> {
       crossAxisCount: 2,
       children: _buildGridTileList(gridText.length));
 
-  // The images are saved with names pic0.jpg, pic1.jpg...pic29.jpg.
   // The List.generate() constructor allows an easy way to create
   // a list when objects have a predictable naming pattern.
   List<Container> _buildGridTileList(int count) => List.generate(
       count,
       (i) => Container(
             child: GestureDetector(
+              onTap: () => handleGridTap(i),
               child: Center(
-                child: Text(gridText[i]),
+                child: Text(gridText[i],style: TextStyle(fontSize: 20),),
               ),
             ),
-            color: Color.fromARGB(255, Random().nextInt(255),
-                Random().nextInt(255), Random().nextInt(255)),
+            padding: EdgeInsets.all(10.0),
+            // 内边距
+            margin: EdgeInsets.all(5.0),
+            // 外边距
+            decoration: BoxDecoration(
+              //Container样式
+              color: Color.fromARGB(255, Random().nextInt(255),
+                  Random().nextInt(255), Random().nextInt(255)), // 背景色
+              borderRadius: BorderRadius.circular(10.0), // 圆角边框
+            ),
           ));
+
+  handleGridTap(int i) {
+    print("on tap i:" + i.toString());
+    switch (i) {
+      case 0:
+        Navigator.of(context).push<void>(MaterialPageRoute(
+            builder: (c) => CommonViewPage(title: "Common View")));
+        break;
+      case 1:
+        break;
+    }
 // #enddocregion grid
+  }
 }
