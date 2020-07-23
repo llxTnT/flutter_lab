@@ -107,6 +107,19 @@ class _CommonViewPageState extends State<CommonViewPage> {
                 ),
               ],
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  margin: EdgeInsets.all(5),
+                  child: Image.asset(
+                 "assets/images/doge.jpg",
+                    width: MediaQuery.of(context).size.width-10,
+                    fit: BoxFit.fitWidth,
+                  ),
+                )
+              ],
+            ),
           ]),
     );
   }
