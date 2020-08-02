@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutterlab/ui/sample/common_view_sample_page.dart';
+import 'package:flutterlab/ui/sample/thread_worker_sample_page.dart';
 
 class MainPage extends StatefulWidget {
   MainPage({Key key, this.title}) : super(key: key);
@@ -73,7 +74,7 @@ class _MainPageState extends State<MainPage> {
     );
   }
 
-  List<String> gridText = ['Common View', 'Pixels Type'];
+  List<String> gridText = ['Common View', 'Thread Worker'];
 
   // #docregion grid
   Widget _buildGrid() => GridView.count(
@@ -114,6 +115,8 @@ class _MainPageState extends State<MainPage> {
             builder: (c) => CommonViewPage(title: "Common View")));
         break;
       case 1:
+        Navigator.of(context).push<void>(MaterialPageRoute(
+            builder: (c) => ThreadWorkerPage(title: "Thread Worker")));
         break;
     }
 // #enddocregion grid
